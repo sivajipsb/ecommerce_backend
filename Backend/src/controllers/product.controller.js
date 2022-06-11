@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const Mobile = require('../model/product.model');
+const Product = require('../model/product.model');
 
 router.post("/",async (req,res) => {
     try{
         let product = await Product.create(req.body);
-        return res.send(mobile)
+        return res.send(product)
     }
     catch(e){
         return res.send(e)
@@ -14,8 +14,8 @@ router.post("/",async (req,res) => {
 
 router.get("/",async (req,res) => {
     try{
-        let mobile = await Mobile.find().lean().exec();
-        return res.send(mobile)
+        let product = await Product.find().lean().exec();
+        return res.send(product)
     }
     catch(e){
         return res.send(e)
@@ -24,7 +24,7 @@ router.get("/",async (req,res) => {
 
 router.get("/:id",async (req,res) => {
     try{
-        let mobile = await Mobile.findOne({_id:req.params.id});
+        let product = await Product.findOne({_id:req.params.id});
         return res.send(mobile)
     }
     catch(e){
@@ -32,17 +32,6 @@ router.get("/:id",async (req,res) => {
     }
 })
 
-router.get("/filter",async (req,res) => {
-    
-    try{
-        const mobiletitle=req.params.category
-        let mobile = await Mobile.find({title:mobiletitle}).lean().exec();
-        return res.send(mobile)
-    }
-    catch(e){
-        return res.send(e)
-    }
-})
 
 
 
