@@ -12,12 +12,12 @@ app.use(cors());
 
 const UserController = require('./controllers/user.controller')
 const ProductController = require('./controllers/product.controller')
-
+const CartMobileController = require("./controllers/cart.controller")
 
 
 app.use("/auth",UserController);
 app.use("/products", ProductController);
-
+app.use("/cart",CartMobileController)
 
 
 
