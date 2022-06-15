@@ -3,7 +3,7 @@ const connect = require('./configs/db');
 const cors= require("cors")
 
 const app = express();
-// require("dotenv").config()
+
 const port=process.env.PORT || 2345
 
 app.use(express.json());
@@ -12,12 +12,12 @@ app.use(cors());
 
 const UserController = require('./controllers/user.controller')
 const ProductController = require('./controllers/product.controller')
-const CartMobileController = require("./controllers/cart.controller")
+const CartController = require("./controllers/cart.controller")
 
 
 app.use("/auth",UserController);
 app.use("/products", ProductController);
-app.use("/cart",CartMobileController)
+app.use("/cart",CartController)
 
 
 
